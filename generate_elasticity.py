@@ -53,7 +53,8 @@ def write_elasticity(filename, elasticity, order):
     assert(len(entries) == math.pow(dim, order)) 
 
     #write data to file
-    eFile = filename+'.elas'
+    base = os.path.splitext(filename)[0]
+    eFile = base+'.elas'
 
     data = []
     for entry in entries:
@@ -62,7 +63,13 @@ def write_elasticity(filename, elasticity, order):
             entryList.append(int(letter))
         entryList = tuple(entryList)
         data.append( elasticity[entryList] )
-    print data
+
+    #convert data to string
+    dataStr = ' '.join([str(x) for x in data])
+
+    #write string to file
+    with open(eFile,'w') as f:
+        f.write(dataStr) 
 
     return    
 
