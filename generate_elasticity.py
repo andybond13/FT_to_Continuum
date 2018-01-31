@@ -82,7 +82,7 @@ def calc_rahmoun(data, order):
 
 def calc_shertzer(data, order):
     dim = 3
-    shape = (dim,3)*order
+    shape = (dim,)*order
 
     elasticity = np.zeros( shape )
     return elasticity
